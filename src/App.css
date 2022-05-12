@@ -19,7 +19,7 @@
     color: #fff !important;
     font-size: 1.5em !important;
     margin-left: 35px;
-    margin-right: 35px;
+    margin-right: 75px;
     text-align: center;
     font-family: 'Orbitron', sans-serif !important;
 }
@@ -215,7 +215,7 @@ body {
 
 #cardInfo {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 #cardSpan{
@@ -240,11 +240,12 @@ body {
 #cardSpanLink {
     text-decoration: none;
     font-weight: normal;
+    color: black;
 }
 
 #cardSpanLink:hover {
     color: var(--orange-color) !important;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 #searchBtn {
@@ -266,4 +267,37 @@ body {
     margin-right: 10px;
     color: black;
     font-weight: bold;
+}
+
+#pageCounter {
+    color: white !important;
+    font-size: 20px !important;
+    font-family: 'Orbitron', sans-serif !important;   
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#pageBtn {
+    background-color: black;
+    color: white;
+    border: 2px solid var(--orange-color);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Orbitron', sans-serif !important; 
+    display: inline; 
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#pageBtn:hover {
+    color: var(--orange-color) !important;
+}
+
+#pageControl {
+    text-align: center;
+}
+
+#pageBtnOutput {
+    display: none;
 }
