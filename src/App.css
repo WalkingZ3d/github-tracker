@@ -1,0 +1,269 @@
+:root {
+    /* --orange-color: #ff5900; */
+    --orange-color: #00ff00;
+    --header-color: #000;
+    --title-color: #21252b;
+    --body-color: #282c34;
+    --text-color: #abb2bf;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Changa&family=Orbitron&display=swap');
+
+#top {
+    background-color: var(--header-color);
+    margin: 0;
+    text-align: right !important;  
+}
+
+#navItem {
+    color: #fff !important;
+    font-size: 1.5em !important;
+    margin-left: 35px;
+    margin-right: 35px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif !important;
+}
+
+#navItem:hover {
+    color: var(--orange-color) !important;
+}
+
+#hamburgerButton {
+    background-color: var(--orange-color) !important;
+    color: white !important;
+    z-index: 0;
+    margin-right: 10px
+}
+
+#containerNavId {
+    margin-left: 0;
+    padding-left: 0;
+    margin-right: 0;
+    padding-right: 0;
+    z-index: 100;
+}
+
+span {
+    color: black
+}
+
+#title {
+    padding-top: 2% !important;
+    padding-bottom: 2% !important;
+    background-color: var(--title-color) !important;
+    color: var(--orange-color) !important;
+    margin-bottom: 0;
+}
+
+#titleH1 {
+    margin: auto;
+    font-size: 3.5em;
+}
+
+#subtitleH4 {
+    font-size: 3.5em;
+}
+
+
+footer {
+    text-align: center !important;
+    font-size: 18px !important;
+    background-color: var(--header-color);
+    bottom: 0 !important;
+    width: 100%;
+    position: relative !important;
+}
+
+strong {
+    font-size: 28px;
+    color: var(--orange-color) !important;
+}
+
+body {
+    font-family: 'Changa', sans-serif;
+    background-color: var(--body-color) !important;
+    color: var(--text-color) !important;
+}
+
+#nameEnd {
+    color: var(--orange-color) !important;
+    font-family: 'Orbitron', sans-serif !important;
+}
+
+#socialsHeader {
+    color: white !important;
+    font-size: 28px !important;
+    font-family: 'Orbitron', sans-serif !important;
+}
+
+.flex {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+
+.btn.btn-social-icon {
+    width: 50px;
+    height: 50px;
+    padding: 0
+}
+
+.btn-outline-github {
+    border: 2px solid white;
+    color: white;
+    border-radius: 25px;
+}
+
+.btn-outline-github:hover {
+    background: #181c24;
+    color: #ffffff
+}
+
+.btn-outline-linkedin {
+    border: 2px solid white;
+    color: white;
+    border-radius: 25px;
+}
+
+.btn-outline-linkedin:hover {
+    background: #0a66c2;
+    color: #ffffff;
+    border-radius: 25px;
+}
+
+#socialButton {
+    margin-right: 10px;
+}
+
+#loremPara {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#x {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.section {
+    text-align:center;
+    font-size: 3em;
+}
+
+#logoId {
+    width: 55px;
+    height: 50px;
+}
+
+#searchH2 {
+    color: var(--orange-color);
+    font-size: 1.8em;
+}
+
+.lmao {
+    /* background-image:url('./images/background.png') ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%; */
+    background-color: #0a66c2;
+    height: 100%;
+}
+
+.content {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;    
+}
+.err404 {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#reposList {
+    list-style-type: none;
+    padding-right: 45px;
+    background-color: var(--body-color) !important;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size: 18px;
+}
+
+#reposList:hover {
+    color: var(--orange-color) !important;
+    cursor: pointer;
+}
+
+#xd {
+    background-color: var(--body-color) !important;
+}
+
+#cardBody {
+    text-align: center;
+    background-color: var( --text-color);
+    color: black;
+    
+}
+
+#cardInfo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#cardSpan{
+    text-align: center;
+    font-weight: normal;
+}
+
+#cardBtn {
+    background-color: var(--body-color) !important;
+    color: white;
+    border: 2px solid var(--orange-color);
+    border-radius: 10px;
+}
+
+#cardBtn:hover {
+    background-color: var(--body-color) !important;
+    color: var(--orange-color) !important;
+    border: 2px solid var(--orange-color);
+    border-radius: 10px;
+}
+
+#cardSpanLink {
+    text-decoration: none;
+    font-weight: normal;
+}
+
+#cardSpanLink:hover {
+    color: var(--orange-color) !important;
+    text-decoration: none;
+}
+
+#searchBtn {
+    background-color: black;
+    color: white;
+    border: 2px solid var(--orange-color);
+    border-radius: 10px;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+#searchBtn:hover {
+    color: var(--orange-color) !important;
+}
+
+#searchInpHome {
+    border-radius: 10px;
+    font-size: 18px;
+    margin-right: 10px;
+    color: black;
+    font-weight: bold;
+}
