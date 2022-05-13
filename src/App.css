@@ -210,11 +210,113 @@ body {
     background-color: var(--body-color) !important;
 }
 
+#perPageLabel {
+    color: white;
+    margin-right: 20px;
+    font-family: 'Orbitron', sans-serif !important; 
+}
+
+#perPage {
+    background-color: black;
+    color: white;
+    border: 2px solid var(--orange-color);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Orbitron', sans-serif !important; 
+    display: inline; 
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+
+#pageBtnReset {
+    background-color: black;
+    color: white;
+    border: 2px solid var(--orange-color);
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Orbitron', sans-serif !important; 
+    display: inline; 
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 #cardBody {
     text-align: center;
     background-color: var( --text-color);
     color: black;
     
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+   
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    #pageBtnReset {
+        margin-left: 100px;
+    }
+    #perPage {
+        text-align: center !important;
+        margin-right: 30px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    #pageBtnReset {
+        margin-left: 150px;
+    }
+    #perPage {
+        text-align: center !important;
+        margin-right: 100px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    #pageBtnReset {
+        margin-left: 250px;
+    }
+    #perPage {
+        text-align: center !important;
+        margin-right: 170px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    #pageBtnReset {
+        margin-left: 250px;
+    }
+    #perPage {
+        text-align: center !important;
+        margin-right: 230px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1400px) {
+    #pageBtnReset {
+        margin-left: 450px;
+    }
+    #perPage {
+        text-align: center !important;
+        margin-right: 390px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    #pageBtnReset {
+        margin-left: 540px;
+    }
+    #perPage {
+        text-align: center !important;
+        margin-right: 460px;
+    }
 }
 
 #cardInfo {

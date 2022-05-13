@@ -8,10 +8,12 @@ const SearchPage = () => {
     const [submitValue, setSubmitValue] = useState("");
     const [RepoData, setRepoData] = useState([]);
     const [page, setPage] = useState(1);
+    const [perPage, setPerPage] = useState(5);
     const [reposCount, setReposCount] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
+        //console.log(document.getElementById('cars').value)
         if (submitValue.length > 0) {
             async function searchApi2(searchString) {
                 try {
@@ -27,7 +29,7 @@ const SearchPage = () => {
             async function searchApi(searchString) {
             try {
                 let xd = reposCount
-                const {data} = await axios.get(`https://api.github.com/users/${searchString}/repos?sort=created&per_page=5&page=${page}`);
+                const {data} = await axios.get(`https://api.github.com/users/${searchString}/repos?sort=created&per_page=${perPage}&page=${page}`);
                 if(data.length === 0){
                     console.log("nope")
                     setPage(prev => prev - 1)
@@ -54,7 +56,7 @@ const SearchPage = () => {
             document.getElementById('output').style.display = 'none';
         }    
         
-    }, [submitValue, page]);
+    }, [submitValue, page, perPage]);
 
     function handleInput(e) {
         const newInput = e.target.value;
@@ -92,6 +94,10 @@ const SearchPage = () => {
         document.getElementById('pageBtnOutput').style.display = 'none';
     }
 
+    function handleChoice(e) {
+        setPerPage(e);
+    }
+
     return (
             <>
             <div className="jumbotron text-center" id="title">
@@ -108,12 +114,27 @@ const SearchPage = () => {
                 <div className="row ">
                     <div className="col-sm-12 ">
                         <h2 id='searchH2'></h2>
-                        <button id='pageBtn' onClick={handleClickReset}>Reset Search</button>
+                    </div>
+                    <div className="col-sm-6 text-center">
+                        <button id='pageBtnReset' onClick={handleClickReset}>Reset Search</button>
+                        <br />
+                    </div>
+                    <div className="col-sm-6 ">
+                        <h2 id='searchH2'></h2>
+                        <form className="text-center perPageForm" >
+                            <label id='perPageLabel' htmlFor="perPage">Results Per Page:</label>
+                            <select name="perPage" id="perPage" onChange={function getPerPage(e) {handleChoice(e.target.value)}} defaultValue="5" className="dropdown-dark-color">
+                                <option id="perPageOption" value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="5">5</option>
+                                <option value="10">10</option>
+                            </select>
+                            <br/>
+                        </form>
                         <br />
                     </div>
                 </div>
-            </div>
-            <br />
+            </div>   
             <div className="container-fluid justify-content-center text-center" id="xd">
                 <ul id='output'>{ renderRepos() }</ul>
             </div>
@@ -130,7 +151,7 @@ const SearchPage = () => {
                         <button id='pageBtn' onClick={handleClickNext}>Next Page</button>   
                     </div>
                 </div>
-                </div>   
+                </div> 
             </>
     )
 }
