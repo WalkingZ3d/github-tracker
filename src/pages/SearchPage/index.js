@@ -87,6 +87,11 @@ const SearchPage = () => {
         
     }
 
+    async function handleClickReset() {
+        setSubmitValue("");
+        document.getElementById('pageBtnOutput').style.display = 'none';
+    }
+
     return (
             <>
             <div className="jumbotron text-center" id="title">
@@ -103,14 +108,16 @@ const SearchPage = () => {
                 <div className="row ">
                     <div className="col-sm-12 ">
                         <h2 id='searchH2'></h2>
-                        <br/>
+                        <button id='pageBtn' onClick={handleClickReset}>Reset Search</button>
+                        <br />
                     </div>
                 </div>
             </div>
+            <br />
             <div className="container-fluid justify-content-center text-center" id="xd">
                 <ul id='output'>{ renderRepos() }</ul>
             </div>
-              
+            <br />              
             <div className="container-fluid  justify-content-center text-center" id='pageBtnOutput'>     
                 <div className="row" >
                     <div className="col-sm-4" >
