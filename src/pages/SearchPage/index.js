@@ -6,11 +6,12 @@ const SearchPage = () => {
 
     const [inputValue, setInputValue] = useState("");
     const [submitValue, setSubmitValue] = useState("");
-    const [RepoData, setRepoData] = useState([]);
+    const [repoData, setRepoData] = useState([]);
     const [page, setPage] = useState(1);
     const [perPage, setPerPage] = useState(5);
     const [reposCount, setReposCount] = useState(0);
-    const [OwnerName, setOwnerName] = useState("");
+    const [ownerName, setOwnerName] = useState("");
+    const [numOfPages, setNumOfPages] = useState(1);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -31,15 +32,12 @@ const SearchPage = () => {
             async function searchApi(searchString) {
             try {
                 let xd = reposCount
-                const {data} = await axios.get(`https://api.github.com/users/${searchString}/repos?sort=created&per_page=${perPage}&page=${page}`);
-                if(data.length === 0){
-                    console.log("nope")
-                    setPage(prev => prev - 1)
-                }  
-                let pages = xd/5
+                const {data} = await axios.get(`https://api.github.com/users/${searchString}/repos?sort=created&per_page=${perPage}&page=${page}`); 
+                setNumOfPages(Math.round(xd/perPage));  
+                console.log("Number of pages in api: ", numOfPages);             
                 const repoNames = data.map(b => b.name);                              
                 setRepoData(repoNames);
-                if (page === pages && page > 0) {
+                if (page === numOfPages && page > 0) {
                     document.getElementById('searchH2').textContent = `${data[0].owner.login}'s Public Repositories`;
                 }     
                 document.getElementById('output').style.display = 'block';                         
@@ -53,7 +51,11 @@ const SearchPage = () => {
             document.getElementById('output').style.display = 'none';
         }    
         
-    }, [submitValue, page, perPage]);
+    }, [submitValue, page, perPage, ownerName]);
+
+    // useEffect(() => {
+    //     console.log("es")
+    // }, [numOfPages])
 
     function handleInput(e) {
         const newInput = e.target.value;
@@ -69,11 +71,16 @@ const SearchPage = () => {
     }
 
     function renderRepos() {
-        return RepoData.map((s, i) => <li key={i} onClick={() => { navigate (`/${OwnerName}/${s}` )}} id='reposList'>{s}</li>)
+        //return RepoData.map((s, i) => <li key={i} onClick={() => { navigate (`/${ownerName}/${s}` )}} id='reposList'>{s}</li>)
+        return repoData.map((s, i) => <li key={i} onClick={() => { }} id='reposList'>{s}</li>)
     }
 
     async function handleClickNext(){
-        setPage(prev => prev + 1)
+        if(page <= numOfPages - 1){
+            setPage(prev => prev + 1)
+        } else {
+            console.log(`Page ${page} cannot be exceeded`)
+        }
     }
 
     async function handleClickPrevious(){
@@ -92,6 +99,7 @@ const SearchPage = () => {
 
     function handleChoice(e) {
         setPerPage(e);
+        setPage(1);
     }
 
     return (
