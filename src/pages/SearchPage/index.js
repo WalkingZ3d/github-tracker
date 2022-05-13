@@ -10,6 +10,7 @@ const SearchPage = () => {
     const [page, setPage] = useState(1);
     const [perPage, setPerPage] = useState(5);
     const [reposCount, setReposCount] = useState(0);
+    const [OwnerName, setOwnerName] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,6 +20,7 @@ const SearchPage = () => {
                 try {
                     const {data} = await axios.get(`https://api.github.com/users/${searchString}/repos?sort=created`);
                     setReposCount(data.length)
+                    setOwnerName(data[0].owner.login);
                     document.getElementById('searchH2').textContent = `${data[0].owner.login}'s Public Repositories`;
                     document.getElementById('pageBtnOutput').style.display = 'block';
                 } catch (err) {
@@ -34,16 +36,11 @@ const SearchPage = () => {
                     console.log("nope")
                     setPage(prev => prev - 1)
                 }  
-                // if(page < pages){
-                //     console.log("nope")
-                //     setPage(prev => prev - 1)
-                // } 
                 let pages = xd/5
                 const repoNames = data.map(b => b.name);                              
                 setRepoData(repoNames);
                 if (page === pages && page > 0) {
                     document.getElementById('searchH2').textContent = `${data[0].owner.login}'s Public Repositories`;
-                      
                 }     
                 document.getElementById('output').style.display = 'block';                         
             } catch (err) {
@@ -72,8 +69,7 @@ const SearchPage = () => {
     }
 
     function renderRepos() {
-        //return RepoData.map((s, i) => <li key={i} onClick={() => { navigate (`/${s.owner.login}/${s.name}` )}} id='reposList'>{s.name}</li>)   
-        return RepoData.map((s, i) => <li key={i} onClick={() => { navigate (`/about` )}} id='reposList'>{s}</li>)
+        return RepoData.map((s, i) => <li key={i} onClick={() => { navigate (`/${OwnerName}/${s}` )}} id='reposList'>{s}</li>)
     }
 
     async function handleClickNext(){
