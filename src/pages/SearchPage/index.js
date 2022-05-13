@@ -15,7 +15,6 @@ const SearchPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        //console.log(document.getElementById('cars').value)
         if (submitValue.length > 0) {
             async function searchApi2(searchString) {
                 try {
@@ -33,8 +32,7 @@ const SearchPage = () => {
             try {
                 let xd = reposCount
                 const {data} = await axios.get(`https://api.github.com/users/${searchString}/repos?sort=created&per_page=${perPage}&page=${page}`); 
-                setNumOfPages(Math.round(xd/perPage));  
-                console.log("Number of pages in api: ", numOfPages);             
+                setNumOfPages(Math.round(xd/perPage));              
                 const repoNames = data.map(b => b.name);                              
                 setRepoData(repoNames);
                 if (page === numOfPages && page > 0) {
@@ -53,10 +51,6 @@ const SearchPage = () => {
         
     }, [submitValue, page, perPage, ownerName]);
 
-    // useEffect(() => {
-    //     console.log("es")
-    // }, [numOfPages])
-
     function handleInput(e) {
         const newInput = e.target.value;
         setInputValue(newInput);        
@@ -71,15 +65,14 @@ const SearchPage = () => {
     }
 
     function renderRepos() {
-        //return RepoData.map((s, i) => <li key={i} onClick={() => { navigate (`/${ownerName}/${s}` )}} id='reposList'>{s}</li>)
-        return repoData.map((s, i) => <li key={i} onClick={() => { }} id='reposList'>{s}</li>)
+        return repoData.map((s, i) => <li key={i} onClick={() => { navigate (`/${ownerName}/${s}` )}} id='reposList'>{s}</li>)
     }
 
     async function handleClickNext(){
         if(page <= numOfPages - 1){
             setPage(prev => prev + 1)
         } else {
-            console.log(`Page ${page} cannot be exceeded`)
+            console.error(`Page ${page} cannot be exceeded`)
         }
     }
 
@@ -87,7 +80,7 @@ const SearchPage = () => {
         if (page > 1) {
             setPage(prev => prev - 1)
         } else {
-            console.log("cant go below page 1!")
+            console.error("cant go below page 1!")
         }
         
     }
